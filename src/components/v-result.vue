@@ -71,6 +71,14 @@ import IPressure from "@/components/icons/i-pressure";
 export default {
   name: "v-result",
   components: {IPressure, IHumidity, IWind, ICalendar},
+  props: {
+    propsSearchData: {
+      type: String,
+      default() {
+        return ""
+      }
+    }
+  },
   data() {
     return {
       city: "",
@@ -86,7 +94,7 @@ export default {
   methods: {
     async postFetch() {
       try {
-        const response = await axios.get("https://api.openweathermap.org/data/2.5/weather?q=Saint Petersburg,ru&appid=d374e8f9cbae209a96ed51df9e9e5721&units=metric");
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.propsSearchData}&appid=d374e8f9cbae209a96ed51df9e9e5721&units=metric`);
         this.city = response.data.name;
         this.celsius = Math.ceil(response.data.main.temp);
         this.weatherMainDescription = response.data.weather[0].description;
@@ -94,7 +102,8 @@ export default {
         this.humidity = response.data.main.humidity;
         this.pressure = response.data.main.pressure;
         this.isIcon = " http://openweathermap.org/img/wn/" + response.data.weather[0].icon + "@2x.png";
-        console.log(this.isIcon)
+        console.log(this.isIcon);
+        console.log(this.propsSearchData)
       } catch {
         alert("Error")
       }

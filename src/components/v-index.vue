@@ -11,7 +11,7 @@
     <div class="index__description">
       <h2 class="index-description__item">Find Weather of your city</h2>
     </div>
-    <div class="index-form">
+    <form class="index-form">
       <input
           type="text"
           class="index-form__input"
@@ -21,9 +21,9 @@
           type="submit"
           class="index-form__submit"
           value="Искать"
-          @click="searchCity"
+          @click="$emit('searchCity', this.search)"
       >
-    </div>
+    </form>
   </div>
 </template>
 
@@ -36,11 +36,6 @@ export default {
   data() {
     return {
       search: ""
-    }
-  },
-  methods: {
-    searchCity() {
-      console.log(this.search)
     }
   }
 }

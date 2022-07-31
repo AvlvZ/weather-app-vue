@@ -1,8 +1,14 @@
 <template>
   <div id="app">
     <div class="modal">
-      <v-index v-if="isIndex"/>
-      <v-result v-else/>
+      <v-index
+          v-if="isIndex"
+          v-on:searchCity="modelSearchCity"
+      />
+      <v-result
+          v-else
+          :propsSearchData="searchData"
+      />
     </div>
   </div>
 </template>
@@ -20,7 +26,14 @@ export default {
   },
   data() {
     return {
-      isIndex: true
+      isIndex: true,
+      searchData: ""
+    }
+  },
+  methods: {
+    modelSearchCity(data) {
+      this.isIndex = false;
+      this.searchData = data;
     }
   }
 }
