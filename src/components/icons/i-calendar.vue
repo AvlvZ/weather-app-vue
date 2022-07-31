@@ -1,9 +1,10 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg"
        data-name="Layer 1"
-       width="100%"
-       viewBox="0 0 859.11298 632.67948"
-       xmlns:xlink="http://www.w3.org/1999/xlink"
+       width="45"
+       height="45"
+       fill="none"
+       viewBox="0 0 25 25"
        v-html="path"
   >
 
@@ -11,10 +12,10 @@
 </template>
 
 <script>
-import icons from "../icons";
+import icons from "@/icons";
 
 export default {
-  name: "v-base-icon",
+  name: "i-calendar",
   props: ['name'],
   data() {
     return {

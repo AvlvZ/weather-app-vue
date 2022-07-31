@@ -11,7 +11,7 @@
         <div class="description">| {{ weatherMainDescription.toUpperCase() }}</div>
       </div>
       <div class="result-info__icon">
-
+        <img :src="isIcon" alt="weather">
       </div>
     </div>
     <h2 class="result__city">{{ city }}</h2>
@@ -19,28 +19,36 @@
       <h6 class="result-detailed__header">Weather Info</h6>
       <div class="result-detailed__item">
         <div class="card">
-          <div class="card__icon"></div>
+          <div class="card__icon">
+            <i-calendar name="calendar" />
+          </div>
           <div class="card__info">
             <div>{{ tomorrow }}</div>
             <div>Date</div>
           </div>
         </div>
         <div class="card">
-          <div class="card__icon"></div>
+          <div class="card__icon">
+            <i-humidity name="humidity"/>
+          </div>
           <div class="card__info">
             <div>{{ humidity }}</div>
             <div>Humidity</div>
           </div>
         </div>
         <div class="card">
-          <div class="card__icon"></div>
+          <div class="card__icon">
+            <i-wind name="wind" />
+          </div>
           <div class="card__info">
             <div>{{ windSpeed }}</div>
             <div>Wind</div>
           </div>
         </div>
         <div class="card">
-          <div class="card__icon"></div>
+          <div class="card__icon">
+            <i-pressure name="pressure" />
+          </div>
           <div class="card__info">
             <div>{{ pressure }}</div>
             <div>Pressure</div>
@@ -55,9 +63,14 @@
 
 import axios from "axios";
 import {format} from "date-fns";
+import ICalendar from "@/components/icons/i-calendar";
+import IWind from "@/components/icons/i-wind";
+import IHumidity from "@/components/icons/i-humidity";
+import IPressure from "@/components/icons/i-pressure";
 
 export default {
   name: "v-result",
+  components: {IPressure, IHumidity, IWind, ICalendar},
   data() {
     return {
       city: "",
@@ -67,19 +80,21 @@ export default {
       windSpeed: "",
       humidity: "",
       pressure: "",
+      isIcon: "",
     }
   },
   methods: {
     async postFetch() {
       try {
-        const response = await axios.get("https://api.openweathermap.org/data/2.5/weather?q=Buynaksk,ru&appid=d374e8f9cbae209a96ed51df9e9e5721&units=metric");
+        const response = await axios.get("https://api.openweathermap.org/data/2.5/weather?q=Saint Petersburg,ru&appid=d374e8f9cbae209a96ed51df9e9e5721&units=metric");
         this.city = response.data.name;
         this.celsius = Math.ceil(response.data.main.temp);
         this.weatherMainDescription = response.data.weather[0].description;
         this.windSpeed = response.data.wind.speed;
         this.humidity = response.data.main.humidity;
         this.pressure = response.data.main.pressure;
-        console.log(response.data)
+        this.isIcon = " http://openweathermap.org/img/wn/" + response.data.weather[0].icon + "@2x.png";
+        console.log(this.isIcon)
       } catch {
         alert("Error")
       }
@@ -130,6 +145,11 @@ export default {
   text-align: left;
   margin-bottom: 32px;
   margin-top: 16px;
+}
+
+.card {
+  display: flex;
+  gap: 8px;
 }
 
 .result-detailed__item {

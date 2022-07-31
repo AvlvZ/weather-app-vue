@@ -11,6 +11,7 @@
 
 import VIndex from "@/components/v-index";
 import VResult from "@/components/v-result";
+
 export default {
   name: 'App',
   components: {
@@ -19,7 +20,7 @@ export default {
   },
   data() {
     return {
-      isIndex: false
+      isIndex: true
     }
   }
 }
@@ -35,15 +36,17 @@ export default {
   align-items: center;
   height: 100vh;
   text-align: center;
-  background: #f3dbdb;
+  background: url("./assets/img/Banner.png") center no-repeat;
+  background-size: cover;
+  color: #FFF;
 }
+
 .modal {
   width: 400px;
   padding: 32px;
-  background: #FFF;
-  border-radius: 16px;
-  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  background: rgba(215, 152, 249, 0.27);
+  box-shadow: inset 0 3.00856px 6.01712px rgba(255, 255, 255, 0.4), inset 0 -3.00856px 9.02569px rgba(255, 255, 255, 0.5), inset 0 -1.50428px 20.0571px rgba(255, 255, 255, 0.24), inset 0 20.0571px 20.0571px rgba(255, 255, 255, 0.24), inset 0 1.00285px 20.5585px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
 }
 </style>

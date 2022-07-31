@@ -13,23 +13,36 @@
     </div>
     <div class="index-form">
       <input
-          type="search"
+          type="text"
           class="index-form__input"
+          v-model="search"
       >
       <input
           type="submit"
           class="index-form__submit"
           value="Искать"
+          @click="searchCity"
       >
     </div>
   </div>
 </template>
 
 <script>
-import VBaseIcon from "@/components/v-base-icon";
+import VBaseIcon from "@/components/icons/i-base-icon";
 export default {
   name: "v-index",
-  components: {VBaseIcon}
+  components: {VBaseIcon},
+  props: {},
+  data() {
+    return {
+      search: ""
+    }
+  },
+  methods: {
+    searchCity() {
+      console.log(this.search)
+    }
+  }
 }
 </script>
 
@@ -51,6 +64,7 @@ export default {
     height: 40px;
     border: 2px solid #c0c0c0;
     border-radius: 4px;
+    padding: 0 16px;
   }
   .index-form__submit {
     color: #111;
