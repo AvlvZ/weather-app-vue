@@ -20,7 +20,7 @@
       <div class="result-detailed__item">
         <div class="card">
           <div class="card__icon">
-            <i-calendar name="calendar" />
+            <i-calendar name="calendar"/>
           </div>
           <div class="card__info">
             <div>{{ tomorrow }}</div>
@@ -38,7 +38,7 @@
         </div>
         <div class="card">
           <div class="card__icon">
-            <i-wind name="wind" />
+            <i-wind name="wind"/>
           </div>
           <div class="card__info">
             <div>{{ windSpeed }}</div>
@@ -47,7 +47,7 @@
         </div>
         <div class="card">
           <div class="card__icon">
-            <i-pressure name="pressure" />
+            <i-pressure name="pressure"/>
           </div>
           <div class="card__info">
             <div>{{ pressure }}</div>
@@ -120,55 +120,54 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import "./src/assets/stylesheets/variables";
+
 .result-header__item {
-  font-size: 18px;
+  font-size: $s-measure * 1.25;
+  margin-bottom: $s-measure * 2;
   font-weight: 500;
-  margin-bottom: 32px;
 }
 
 .result__info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 64px;
+  @include elemFlexPosition(space-between, center, 0);
+  margin-bottom: $s-measure * 4;
 }
 
 .result-info__item {
-  display: flex;
+  @include elemFlexPosition(flex-start, center, 0);
 }
 
 .result-info__item {
-  display: flex;
-  align-items: center;
+  @include elemFlexPosition(flex-start, center, 0);
 }
 
 .temp {
-  font-size: 28px;
+  font-size: $s-measure * 2;
   font-weight: 500;
-  margin-right: 8px;
+  margin-right: $s-measure / 2;
 }
 
 .result-detailed__header {
-  font-size: 18px;
+  font-size: $s-measure;
   font-weight: 500;
   text-align: left;
-  margin-bottom: 32px;
-  margin-top: 16px;
+  margin-bottom: $s-measure * 2;
+  margin-top: $s-measure;
 }
 
 .card {
-  display: flex;
-  gap: 8px;
+  @include elemFlexPosition(flex-start, center, $s-measure / 2);
 }
 
 .result-detailed__item {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: $s-measure * 2;
 }
 
 .description {
-  font-size: 14px;
+  font-size: $s-measure;
 }
 
 .result__city {

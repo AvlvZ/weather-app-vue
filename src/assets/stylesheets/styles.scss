@@ -1,0 +1,41 @@
+@import "variables";
+
+* {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: opacity(0.6);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+  /*border-radius: 50px;*/
+}
+
+::-webkit-scrollbar-thumb {
+  background: #111;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12);
+  border-radius: 50px;
+  border: 2px solid rgba(17, 17, 17, 0.04);
+}
+
+::selection {
+  background: #FFF001;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #FFF001;
+  color: #fff;
+}
+
+/*::-webkit-selection {background: #638FFF; color:#111;}*/
